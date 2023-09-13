@@ -15,6 +15,7 @@ router.put('/:postId/likes', authMiddleware, async(req,res) => {
     const post = await prisma.posts.findUnique({ where: { postId: +postId } })
     
     if (!post) {
+
         return res.status(404).json({ errorMessage: '게시글이 존재하지 않습니다' })
     }
 
@@ -37,6 +38,7 @@ router.put('/:postId/likes', authMiddleware, async(req,res) => {
       return res.status(200).json({ message: '게시글의 좋아요를 취소하였습니다' })
     }
   } catch (err) {
+
     return res.status(400).json({ errorMessage: '게시글 좋아요 추가/취소에 실패하였습니다' })
   }
 })

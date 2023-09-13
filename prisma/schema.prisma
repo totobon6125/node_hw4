@@ -16,7 +16,7 @@ model Users {
   nickname  String    @unique @map("nickname")
   password  String    @map("password")
   confirm   String    @map("confirm")
-  aboutlike String    @map("aboutlike")
+  aboutlike String?   @map("aboutlike")
 
   createdAt DateTime  @default(now()) @map("CreatedAt")
   updatedAt DateTime  @updatedAt @map("UpdatedAt")
@@ -32,7 +32,7 @@ model Posts {
   UserId    Int       @map("UserId")     // Users 테이블에서 UserId 칼럼을 참조, 참조할 땐 키 값 첫번째 철자를 대문자로 표시 , 한명의 사용자가 여러 게시글이 가능해야 하므로 unique 삭제
   title     String    @map("title")
   content   String    @db.Text @map("content")  // "@db.Text" 텍스트 데이터 타입 사용하기 위한 코드
-  likes     Int       @map("likes")
+  likes     Int?      @map("likes")
 
   createdAt DateTime  @default(now()) @map("CreatedAt")
   updatedAt DateTime  @updatedAt @map("UpdatedAt")

@@ -28,11 +28,11 @@ router.post('/sign-in', async (req, res, next) => {
             userId: user.userId  // 입력값 : db 저장 값
         },
         process.env.jwt_key //비밀키로 .env에 넣어야 함.
-        )
+    )
 
     res.cookie('authorization', `Bearer ${token}`)
     // 형식           백틱으로 처리함-빈공간 필요
-    return res.status(200).json({msg: '로그인에 성공했습니다.'})
+    return res.status(200).json({ msg: '로그인에 성공했습니다.' })
 })
 
 export default router;
